@@ -2,34 +2,35 @@ public abstract class VeiculoHibrido extends Veiculo implements reabastecivel, r
     private Motor propulsor;
     private float tanqueCombustivel;
     private int nivelBateria;
-    private String tipo;
-    private final String pass = "carro Passeio";
-    private final String esp = "carro Esportivo";
-    private final String moto = "motocicleta";
 
-    public VeiculoHibrido(int id, int distPerc, int quantidadeRodas){
-        super(id, distPerc, quantidadeRodas);
+    public VeiculoHibrido(int id, int distPerc, int quantidadeRodas, float VALOR_CALIBRAGEM){
+        super(id, distPerc, quantidadeRodas, VALOR_CALIBRAGEM);
+        propulsor = new Motor(this);
     }
 
 
-    abstract int getNivelBateria();
-
-    abstract float getTanqueCombustivel();
-
-    public String getTipo() {
-        return tipo;
-    }; // para saber qual é o tipo do veículo (esportivo, motocicleta ou passeio)
-
-    public String getEsp() {
-        return esp;
+    public int getNivelBateria(){
+        if (this.getPropulsor().getModo() == "eletrico")
+            return nivelBateria;
+        else return 0;    
     }
 
-    public String getPass() {
-        return pass;
+    public float getTanqueCombustivel(){
+        if (this.getPropulsor().getModo() == "combustao")
+            return tanqueCombustivel;
+        else return 0; 
     }
 
-    public String getMoto() {
-        return moto;
+    public Motor getPropulsor() {
+        return propulsor;
+    }
+
+    public void setNivelBateria(int nivelBateria) {
+        this.nivelBateria = nivelBateria;
+    }
+
+    public void setTanqueCombustivel(float tanqueCombustivel) {
+        this.tanqueCombustivel = tanqueCombustivel;
     }
 
 

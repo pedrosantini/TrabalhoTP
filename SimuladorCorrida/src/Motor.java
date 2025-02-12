@@ -7,17 +7,7 @@ public class Motor {
     private static final float fatorConsumoEletrico = 0.0001f;
 
     public Motor(VeiculoHibrido n){
-        String s = n.getTipo();
         Random r = new Random();
-        if (s == n.getEsp()){
-            cilindrada = 2.5f;
-        }
-        else if (s == n.getPass()) {
-            cilindrada = 1.5f;
-        }
-        else if (s == n.getMoto()) {
-            cilindrada = 1.0f;
-        }
 
         boolean m = r.nextBoolean();
 
@@ -28,6 +18,8 @@ public class Motor {
         else{
             modo = "eletrico";
         }
+
+
 
         giroAtual = 0;        
     }
@@ -46,6 +38,22 @@ public class Motor {
 
     public void acelerar(int a){
         this.giroAtual += a;
+    }
+
+    public void setCilindrada(float cilindrada) {
+        this.cilindrada = cilindrada;
+    }
+
+    public String getModo() {
+        return modo;
+    }
+
+    public float getCilindrada() {
+        return cilindrada;
+    }
+
+    public int getGiroAtual() {
+        return giroAtual;
     }
     
 }
