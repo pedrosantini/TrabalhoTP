@@ -70,8 +70,4 @@ public class Motocicleta extends VeiculoHibrido {
             this.setDistanciaPercorrida(getDistanciaPercorrida()+2);
     }
 
-
-
-
-
 }
